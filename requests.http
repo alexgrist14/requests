@@ -1,0 +1,49 @@
+@baseUrl = http://localhost:3000/tasks
+
+
+### Create a new task
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "topic": "Request error",
+  "message": "Error 502 has occur."
+}
+
+
+### Take in progress
+PATCH {{baseUrl}}/1/start
+
+
+### Finish task
+PATCH {{baseUrl}}/1/complete
+Content-Type: application/json
+
+{
+  "resolution": "Problem was solved"
+}
+
+
+### Cancel task
+PATCH {{baseUrl}}/1/cancel
+Content-Type: application/json
+
+{
+  "reason": "Incorrect task"
+}
+
+
+### Get all tasks
+GET {{baseUrl}}
+
+
+### Filter by date
+GET {{baseUrl}}?date=2025-04-16
+
+
+### Filter by date range
+GET {{baseUrl}}?from=2025-04-10&to=2025-04-16
+
+
+### Cancel all task that have status "In progress"
+PATCH {{baseUrl}}/cancel/in-progress/all
